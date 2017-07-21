@@ -43,8 +43,8 @@ public class Randomizer
 		for(int i = 0; i < numOfItems; i++)
 		{
 			double percent = Math.random() * manager.getTotal();
-			Item appearence = manager.getInBoundaries(percent);
-			items[i] = appearence.getItemStack();
+			Item item = manager.getInBoundaries(percent);
+			items[i] = item.getItemStack();
 		}
 		
 		return items;

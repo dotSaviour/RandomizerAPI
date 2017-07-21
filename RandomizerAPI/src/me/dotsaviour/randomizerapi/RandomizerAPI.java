@@ -21,6 +21,12 @@ public class RandomizerAPI extends JavaPlugin
 		Bukkit.getConsoleSender().sendMessage(ChatColor.DARK_GREEN + "RandomizerAPI"+ ChatColor.WHITE + "-" + ChatColor.GREEN + "Online");
 	}
 	
+	@Override
+	public void onDisable()
+	{
+		Bukkit.getConsoleSender().sendMessage(ChatColor.DARK_RED + "RandomizerAPI"+ ChatColor.WHITE + "-" + ChatColor.RED + "Offline");
+	}
+	
 	public void addRandomizer(Randomizer randomizer) throws NamingException
 	{
 		if(getRandomizer(randomizer.getIdentifier()) != null)
