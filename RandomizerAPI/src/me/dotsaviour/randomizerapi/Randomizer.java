@@ -1,7 +1,5 @@
 package me.dotsaviour.randomizerapi;
 
-import java.util.Random;
-
 import org.bukkit.Bukkit;
 import org.bukkit.inventory.ItemStack;
 
@@ -42,11 +40,9 @@ public class Randomizer
 
 		ItemStack[] items = new ItemStack[numOfItems];
 		
-		Random r = new Random();
-		
 		for(int i = 0; i < numOfItems; i++)
 		{
-			int percent = r.nextInt(100) + 1;
+			double percent = Math.random() * manager.getTotal();
 			Item appearence = manager.getInBoundaries(percent);
 			items[i] = appearence.getItemStack();
 		}

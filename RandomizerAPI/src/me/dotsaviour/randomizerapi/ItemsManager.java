@@ -66,4 +66,5 @@ public class ItemsManager
 	}
 	
 	public boolean isReady() { return isReady; }
+	public double getTotal() { return total; }
 }
