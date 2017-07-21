@@ -6,6 +6,7 @@ import javax.naming.NamingException;
 
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
+import org.bukkit.inventory.ItemStack;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public class RandomizerAPI extends JavaPlugin
@@ -37,17 +38,17 @@ public class RandomizerAPI extends JavaPlugin
 		return null;
 	}
 	
-	public PacksManager getPacksManager(String identifier)
+	public ItemsManager getItemsManager(String identifier)
 	{
 		return getRandomizer(identifier).getManager();
 	}
 	
-	public Pack getPack(String randomizerId, String packId)
+	public Item getItem(String identifier, ItemStack item)
 	{
-		Randomizer randomizer = getRandomizer(randomizerId);
+		Randomizer randomizer = getRandomizer(identifier);
 		
 		if(randomizer != null)
-			return randomizer.getManager().getPack(packId);
+			return randomizer.getManager().getItem(item);
 		
 		return null;
 	}

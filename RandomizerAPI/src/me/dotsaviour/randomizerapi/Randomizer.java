@@ -13,15 +13,9 @@ import org.bukkit.inventory.ItemStack;
 public class Randomizer
 {
 	private String identifier;
-	private PacksManager manager;
+	private ItemsManager manager;
 	
-	/**
-	 * 
-	 * @param manager
-	 * @throws IllegalArgumentException
-	 * @throws IllegalStateException
-	 */
-	public Randomizer(String identifier, PacksManager manager) throws IllegalArgumentException, IllegalStateException
+	public Randomizer(String identifier, ItemsManager manager) throws IllegalArgumentException, IllegalStateException
 	{
 		if(identifier == null)
 			throw new IllegalArgumentException("identifier can not be null");
@@ -32,7 +26,7 @@ public class Randomizer
 		if(!manager.isReady())
 		{
 			Bukkit.getPluginManager().disablePlugin(RandomizerAPI.getInstance());
-			throw new IllegalStateException("you can not start randomizing while manager is not ready... disabling plugin");
+			throw new IllegalStateException("you can not start randomizing while manager is not ready... disabling API");
 		}
 		else
 		{
@@ -41,12 +35,6 @@ public class Randomizer
 		}
 	}
 	
-	/**
-	 * 
-	 * @param numOfItems : the needed number of items to return
-	 * @return
-	 * @throws IllegalArgumentException when you enter any number in the parameter less than 1
-	 */
 	public ItemStack[] randomize(int numOfItems) throws IllegalArgumentException
 	{	
 		if(numOfItems <= 0)
@@ -59,27 +47,13 @@ public class Randomizer
 		for(int i = 0; i < numOfItems; i++)
 		{
 			int percent = r.nextInt(100) + 1;
-			Pack appearence = manager.getInBoundaries(percent);
-			items[i] = appearence.getRandomItem();
+			Item appearence = manager.getInBoundaries(percent);
+			items[i] = appearence.getItemStack();
 		}
 		
 		return items;
 	}
 	
-	/**
-	 * This method adds an item using the identifier of the Appearance.
-	 * 
-	 * @param identifier : it is the pack identifier
-	 * @param item
-	 * @return
-	 * true: if it added the item.
-	 * false: otherwise.
-	 */
-	public boolean addItem(String identifier, ItemStack item)
-	{
-		return manager.addItem(identifier, item);
-	}
-	
 	protected String getIdentifier() { return identifier; }
-	protected PacksManager getManager() { return manager; }
+	protected ItemsManager getManager() { return manager; }
 }
