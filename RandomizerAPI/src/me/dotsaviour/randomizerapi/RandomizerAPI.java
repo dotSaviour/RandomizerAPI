@@ -6,7 +6,6 @@ import javax.naming.NamingException;
 
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
-import org.bukkit.inventory.ItemStack;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public class RandomizerAPI extends JavaPlugin
@@ -49,12 +48,12 @@ public class RandomizerAPI extends JavaPlugin
 		return getRandomizer(identifier).getManager();
 	}
 	
-	public Item getItem(String identifier, ItemStack item)
+	public ArrayList<Item> getItems(String identifier)
 	{
 		Randomizer randomizer = getRandomizer(identifier);
 		
 		if(randomizer != null)
-			return randomizer.getManager().getItem(item);
+			return randomizer.getManager().getItems();
 		
 		return null;
 	}

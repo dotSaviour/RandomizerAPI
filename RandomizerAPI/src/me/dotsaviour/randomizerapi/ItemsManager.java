@@ -2,8 +2,6 @@ package me.dotsaviour.randomizerapi;
 
 import java.util.ArrayList;
 
-import org.bukkit.inventory.ItemStack;
-
 public class ItemsManager
 {
 	private ArrayList<Item> items = new ArrayList<Item>();
@@ -43,23 +41,7 @@ public class ItemsManager
 		return null;
 	}
 	
-	public Item getItem(ItemStack item)
-	{
-		ItemStack targetItem;
-		boolean isSameItems;
-		
-		for(Item localItem : items)
-		{
-			targetItem = localItem.getItemStack();
-			isSameItems = targetItem.isSimilar(item) && localItem.getItemStack().getItemMeta().getDisplayName().equals(item.getItemMeta().getDisplayName());
-			
-			if(isSameItems)
-				return localItem;
-		}
-		
-		return null;
-	}
-	
+	public ArrayList<Item> getItems() { return items; }
 	public boolean isReady() { return isReady; }
 	public double getTotal() { return total; }
 }
