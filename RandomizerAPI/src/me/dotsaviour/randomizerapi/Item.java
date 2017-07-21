@@ -2,16 +2,11 @@ package me.dotsaviour.randomizerapi;
 
 import org.bukkit.inventory.ItemStack;
 
-/**
- * This class contains the all the chosen items.<br>
- * <br>
- * Note: all the items in the pack have the same appearance chance.
- */
 public class Item
 {
 	private final ItemStack item;
 	private double lowerBound, upperBound;
-	private final double percent; //percentage of appearance
+	private final double percent; //chance of appearance
 	
 	public Item(ItemStack item, double percent) throws IllegalArgumentException
 	{
@@ -27,7 +22,7 @@ public class Item
 	
 	public boolean isInBoundries(double percent)
 	{
-		return percent >= lowerBound && percent <= upperBound;
+		return percent >= lowerBound && percent < upperBound;
 	}
 	
 	public double getPercent() { return percent; }

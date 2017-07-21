@@ -4,11 +4,6 @@ import java.util.ArrayList;
 
 import org.bukkit.inventory.ItemStack;
 
-/**
- * This class manages the packs and organizes their appearance or rarity level.<br>
- * <br>
- * Note: you need to make the total percentage 100% not less and not more to proceed to the next step.
- */
 public class ItemsManager
 {
 	private ArrayList<Item> items = new ArrayList<Item>();
@@ -16,13 +11,13 @@ public class ItemsManager
 	private double total = 0;
 	
 
-	public void add(Item item) throws IllegalArgumentException
+	public void addItem(Item item) throws IllegalArgumentException
 	{
 		if(isReady)
 			return;
 		
 		if(total + item.getPercent() > 100)
-			throw new IllegalArgumentException("the total percentage of all packs can not exceed 100");
+			throw new IllegalArgumentException("the total percentage of all items can not exceed 100");
 		
 //		for(Item localPack : items)
 //			if(localPack.getItem().isSimilar(item.getItem()))
@@ -30,7 +25,7 @@ public class ItemsManager
 		
 		items.add(item);
 		
-		item.setLowerBound(total+1);
+		item.setLowerBound(total);
 		item.setUpperBound(total+item.getPercent());
 		
 		total += item.getPercent();
